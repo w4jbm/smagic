@@ -26,6 +26,19 @@
 #
 # NOTE: For image processing, this script uses the command 'convert' which may be called
 #       'magick' depending on your specific distribution and/or version.
+#
+# Installation:
+# Copy the script to the directory you want to work in and use 'chmod +x smagic.sh' to
+# make it executable. You should be able to run it using './smagic.sh song_title'.
+#
+# Revision History:
+# v1.0 - Oct 2026 - Initial version.
+#
+# Known Issues:
+#   - Limited Error Checking
+#
+#####
+
 
 # Check if the number of arguments is equal to 0
 if [ $# -eq 0 ]; then

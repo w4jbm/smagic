@@ -19,7 +19,7 @@ This might be something you largely use as is or something that you take and tai
 
 ## Shameless Plug
 
-You can music by The Daft Spaniels on most streaming platforms as well as on Facebook and YouTube. The music covers a variety of styles and genres. It is more about learning and having fun while making music that allows expression.
+You can listen to music by The Daft Spaniels on most streaming platforms as well as on Facebook and YouTube. The music covers a variety of styles and genres. It is about learning and having fun while making music that allows expression.
 
 ## The Fine Print
 Suno is a registered trademark of Suno, Inc., a generative artificial intelligence music company based in Cambridge, Massachusetts.

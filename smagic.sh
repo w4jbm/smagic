@@ -32,7 +32,8 @@
 # make it executable. You should be able to run it using './smagic.sh song_title'.
 #
 # Revision History:
-# v1.0 - Oct 2026 - Initial version.
+# v1.00 - Oct 2026 - Initial version.
+# v1.01 - Oct 2026 - Added lowpass filter and equilization to handle v6 files better.
 #
 # Known Issues:
 #   - Limited Error Checking
@@ -217,8 +218,23 @@ echo "Normalizing RAW file into TEMP1 file..."
 #
 # gain -n -1: The -n flag stands for normalization. The -1 tells SoX to scale
 #             the peak amplitude to exactly -1 dBFS.
+#
+# equalizer 300 0.7q -2.5: Cuts the "mud" zone. Suno v6 tracks often pack too much
+#                          energy around 250 Hz–400 Hz. This applies a relatively
+#                          wide (0.7q) reduction of 2.5 dB at 300 Hz to clear up
+#                          the mix.
+#
+# equalizer 4000 1.0q -1.5: Tames vocal harshness. AI vocals frequently have a
+#                           piercing, metallic texture in the presence range. This
+#                           dips 4 kHz by 1.5 dB to make the track smoother to listen
+#                           to at loud volumes.
+#
+# lowpass 19k: Takes advantage of v6's improved high-end extension while cleanly slicing
+#              away any artificial high-frequency noise right before the limit of human
+#              hearing.
 
-sox "$RAW_WAV" "$TEMP1_WAV"  highpass 10 gain -n -1
+# sox "$RAW_WAV" "$TEMP1_WAV"  highpass 10 gain -n -1 <== Original DC removal and normalization command
+sox "$RAW_WAV" "$TEMP1_WAV" highpass 10 equalizer 300 0.7q -2.5 equalizer 4000 1.0q -1.5 lowpass 19k gain -n -1
 
 echo
 echo "Processing TEMP1 file into MSTR file adjusting for a LUFS of -14... "
